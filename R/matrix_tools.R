@@ -23,9 +23,9 @@ makeVecNorm <- function(L) {
 #' @export
 #'
 #' @examples
-#' square_root <- root(2)
-#' cube_root <- root(3)
-root <- function(n) {
+#' square_root <- makeRoot(2)
+#' cube_root <- makeRoot(3)
+makeRoot <- function(n) {
   function(x) {
     (x)^(1/n)
   }
