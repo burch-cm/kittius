@@ -1,4 +1,4 @@
-# kittus
+# kittius
 ### A collection of personal tools in R  
 
 This is a collection of tools I find myself using on a regular basis, collected in one place so that I dont' have to replicate the code with every new project. It's for personal use, but someone may find some of the tools useful on their own projects.
