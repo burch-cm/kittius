@@ -11,7 +11,10 @@
 #' @examples
 #' calc_tax(85000)
 calc_tax <- function(amount, tax_table = NA, total = TRUE) {
-    if (is.na(tax_table)) data(tax2019); tax_table <- tax2019
+    if (is.na(tax_table)) {
+        data(tax2019, envir = environment())
+        tax_table <- tax2019
+        }
     single_tax <- function(x, tax_table, total) {
         paid <- vector("numeric", length = nrow(tax_table))
         for (i in 1:nrow(tax_table)) {
