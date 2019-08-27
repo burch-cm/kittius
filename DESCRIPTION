@@ -1,0 +1,10 @@
+Package: kittius
+Title: Personal Tools and Code
+Version: 0.0.0.9000
+Authors@R: person("Burch", "Kitt", email = "kitt@vorpal.technology", role = c("aut", "cre"))
+Description: This is a collection of small tools and functions I've written to make my life easier. It's intended for personal use but might contain some tools others would find useful.
+Depends: R (>= 3.5.3)
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.0
