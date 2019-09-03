@@ -2,6 +2,7 @@
 
 export("%notin%")
 export(calc_tax)
+export(get_fiscal)
 export(makeRoot)
 export(makeVecNorm)
 export(mutate_cond)

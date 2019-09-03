@@ -30,3 +30,26 @@
 no_space <- function(x, replacement = "") {
   gsub(pattern = " *", replacement = replacement, x = x)
 }
+
+#' Create Fiscal Month Vector
+#'
+#' @param start numeric. The month in which the fiscal year begins.
+#' @param abb logical. Return month abbreviations?
+#'
+#' @return a character vector of month names in fiscal year order
+#' @export
+#'
+#' @examples
+#' federal_year <- get_fiscal(start = 10)
+get_fiscal <- function(start = 10, abb = FALSE) {
+    if (start > 12 | start <= 0) stop("Starting month must be between 1 and 12")
+    if (start == 1) {
+        if (abb) return(month.abb)
+        return(month.name)
+    }
+    if (abb) {
+        c(month.abb[start:12], month.name[1:(start-1)])
+    } else {
+        c(month.name[start:12], month.name[1:(start-1)])
+    }
+}
