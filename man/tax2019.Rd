@@ -9,7 +9,6 @@
   \item{lower}{the lower bound for a tax bracket}
   \item{upper}{the upper bound for a tax bracket}
   \item{rate}{the marginal tax rate for a bracket}
-  ...
 }}
 \source{
 \url{https://taxfoundation.org/2019-tax-brackets/}

@@ -6,6 +6,8 @@
 #' @param total logical. Return the total amount paid?
 #'
 #' @return a numeric sum of taxes paid (if total = T) or a vector of taxes paid at the marginal rate
+#' @importFrom utils data
+#' @importFrom magrittr %>%
 #' @export
 #'
 #' @examples
