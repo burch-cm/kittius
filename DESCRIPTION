@@ -1,9 +1,9 @@
 Package: kittius
 Title: Personal Tools and Code
-Version: 0.0.0.9001
+Version: 0.19.09.01
 Authors@R: person("Burch", "Kitt", email = "kitt@vorpal.technology", role = c("aut", "cre"))
 Description: This is a collection of small tools and functions I've written to make my life easier. It's intended for personal use but might contain some tools others would find useful.
-Depends: R (>= 3.5.3)
+Depends: R (>= 3.5)
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
@@ -12,4 +12,5 @@ Imports:
     readr,
     dplyr,
     magrittr,
-    purrr
+    purrr,
+    readxl
