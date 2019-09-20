@@ -5,7 +5,7 @@
 \title{Update Data Frame with Changed Fields}
 \usage{
 update_with(.master, .data, .key = "VID", ignore_col_case = TRUE,
-  return_list = FALSE, ...)
+  replace_names = FALSE, return_list = FALSE, ...)
 }
 \arguments{
 \item{.master}{data.frame. The initial data set.}
@@ -15,6 +15,8 @@ update_with(.master, .data, .key = "VID", ignore_col_case = TRUE,
 \item{.key}{character. The name of the shared key/index column between the data frames.}
 
 \item{ignore_col_case}{logical. Should case be ignored when matching column names?}
+
+\item{replace_names}{logical. Should the lowrcase names unsed in the function be replaced with the original data frame names?}
 
 \item{return_list}{logical. Should a list with both the original data and updated data frames be returned? Defaults to FALSE.}
 

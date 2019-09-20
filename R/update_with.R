@@ -26,6 +26,9 @@ find_deltas <- function(.master, .data, .key = "VID", return_all = FALSE,
         .key <- tolower(key_name)
     }
 
+    .data <- .data %>%
+        select(names(.data)[names(.data) %in% names(.master)])
+
     s <- dplyr::filter(.master, (!!as.name(.key)) %in% .data[[.key]]) %>%
         dplyr::select(names(.data))
     resp <- dplyr::setdiff(.data, s)
@@ -51,6 +54,7 @@ find_deltas <- function(.master, .data, .key = "VID", return_all = FALSE,
 #' @param .data data.frame with at least one column name shared with .master
 #' @param .key character. The name of the shared key/index column between the data frames.
 #' @param ignore_col_case logical. Should case be ignored when matching column names?
+#' @param replace_names logical. Should the lowrcase names unsed in the function be replaced with the original data frame names?
 #' @param return_list logical. Should a list with both the original data and updated data frames be returned? Defaults to FALSE.
 #' @param ... additional arguments
 #'
@@ -61,6 +65,7 @@ find_deltas <- function(.master, .data, .key = "VID", return_all = FALSE,
 #' \dontrun{vld %>% update_with(new_data1)}
 update_with <- function(.master, .data, .key = "VID",
                         ignore_col_case = TRUE,
+                        replace_names = FALSE,
                         return_list = FALSE,
                         ...) {
     # convert column names if needed
@@ -74,28 +79,36 @@ update_with <- function(.master, .data, .key = "VID",
     }
 
     .data <- .data %>%
-            select(names(.data)[names(.data) %in% names(.master)])
+        distinct(!!as.name(.key))
+    .data <- .data[names(.data)[names(.data) %in% names(.master)]]
 
     s <- dplyr::filter(.master, (!!as.name(.key)) %in% .data[[.key]]) %>%
         dplyr::select(names(.data))
+
     resp <- dplyr::setdiff(.data, s)
 
     updated <- .master
-    resp_names <- names(resp)[-1]
-    out_ind <- which(.master[[.key]] %in% resp[[.key]])
+    resp_names <- names(resp)[!names(resp) %in% .key]
+    out_ind <- which(.master[[.key]] %in% unique(resp[[.key]]))
+    new_ind <- which(!resp[[.key]] %in% .master[[.key]])
     for (i in seq_along(names(resp))) {
         n <- resp_names[i]
         updated[[n]] <- replace(.master[[n]], out_ind, resp[[n]])
     }
 
-    if (return_list) {
+    # add in new rows
+    # updated <- cbind
+
+    if (replace_names) {
         names(.master) <- master_names
         names(updated) <- master_names
+    }
+
+    if (return_list) {
         x <- list(original = .master,
                   updated  = updated)
         return(x)
     } else {
-        names(updated) <- master_names
         return(updated)
     }
 
