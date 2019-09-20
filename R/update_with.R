@@ -61,7 +61,8 @@ find_deltas <- function(.master, .data, .key = "VID", return_all = FALSE,
 #' \dontrun{vld %>% update_with(new_data1)}
 update_with <- function(.master, .data, .key = "VID",
                         ignore_col_case = TRUE,
-                        return_list = FALSE, ...) {
+                        return_list = FALSE,
+                        ...) {
     # convert column names if needed
     if (ignore_col_case) {
         master_names <- names(.master)
@@ -71,6 +72,9 @@ update_with <- function(.master, .data, .key = "VID",
         key_name <- .key
         .key <- tolower(key_name)
     }
+
+    .data <- .data %>%
+            select(names(.data)[names(.data) %in% names(mstr)])
 
     s <- dplyr::filter(.master, (!!as.name(.key)) %in% .data[[.key]]) %>%
         dplyr::select(names(.data))
