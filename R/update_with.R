@@ -74,7 +74,7 @@ update_with <- function(.master, .data, .key = "VID",
     }
 
     .data <- .data %>%
-            select(names(.data)[names(.data) %in% names(mstr)])
+            select(names(.data)[names(.data) %in% names(.master)])
 
     s <- dplyr::filter(.master, (!!as.name(.key)) %in% .data[[.key]]) %>%
         dplyr::select(names(.data))
