@@ -4,8 +4,9 @@
 \alias{update_with}
 \title{Update Data Frame with Changed Fields}
 \usage{
-update_with(.master, .data, .key = "VID", ignore_col_case = TRUE,
-  replace_names = FALSE, return_list = FALSE, ...)
+update_with(.master, .data, .key = "VID", na_value = NA,
+  ignore_col_case = TRUE, replace_names = FALSE, return_list = FALSE,
+  ...)
 }
 \arguments{
 \item{.master}{data.frame. The initial data set.}
@@ -13,6 +14,8 @@ update_with(.master, .data, .key = "VID", ignore_col_case = TRUE,
 \item{.data}{data.frame with at least one column name shared with .master}
 
 \item{.key}{character. The name of the shared key/index column between the data frames.}
+
+\item{na_value}{what value should replace NA values in the data?}
 
 \item{ignore_col_case}{logical. Should case be ignored when matching column names?}
 

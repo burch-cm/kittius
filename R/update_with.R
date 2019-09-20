@@ -57,6 +57,7 @@ find_deltas <- function(.master, .data, .key = "VID", return_all = FALSE,
 #' @param replace_names logical. Should the lowrcase names unsed in the function be replaced with the original data frame names?
 #' @param return_list logical. Should a list with both the original data and updated data frames be returned? Defaults to FALSE.
 #' @param ... additional arguments
+#' @param na_value what value should replace NA values in the data?
 #'
 #' @return either a data.frame of a list of data.frames
 #' @export
@@ -64,6 +65,7 @@ find_deltas <- function(.master, .data, .key = "VID", return_all = FALSE,
 #' @examples
 #' \dontrun{vld %>% update_with(new_data1)}
 update_with <- function(.master, .data, .key = "VID",
+                        na_value = NA,
                         ignore_col_case = TRUE,
                         replace_names = FALSE,
                         return_list = FALSE,
@@ -98,6 +100,10 @@ update_with <- function(.master, .data, .key = "VID",
 
     # add in new rows
     # updated <- cbind
+
+    if (!is.na(na_value)) {
+        updated[is.na(updated)] <- na_value
+    }
 
     if (replace_names) {
         names(.master) <- master_names
