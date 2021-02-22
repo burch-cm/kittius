@@ -4,8 +4,14 @@
 \alias{find_deltas}
 \title{Find Differences Between A Data Set and an Updated Version}
 \usage{
-find_deltas(.master, .data, .key = "VID", return_all = FALSE,
-  ignore_col_case = TRUE, ...)
+find_deltas(
+  .master,
+  .data,
+  .key = "VID",
+  return_all = FALSE,
+  ignore_col_case = TRUE,
+  ...
+)
 }
 \arguments{
 \item{.master}{a data.frame or tibble containing the master VLD data to use as a baseline.}

@@ -4,9 +4,16 @@
 \alias{update_with}
 \title{Update Data Frame with Changed Fields}
 \usage{
-update_with(.master, .data, .key = "VID", na_value = NA,
-  ignore_col_case = TRUE, replace_names = FALSE, return_list = FALSE,
-  ...)
+update_with(
+  .master,
+  .data,
+  .key = "VID",
+  na_value = NA,
+  ignore_col_case = TRUE,
+  replace_names = FALSE,
+  return_list = FALSE,
+  ...
+)
 }
 \arguments{
 \item{.master}{data.frame. The initial data set.}
